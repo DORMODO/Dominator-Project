@@ -9,12 +9,12 @@ public class DominatorRecursive {
         if (left == right)
             return left;
 
-        int mid = left + (right - left) / 2;
+        int mid = (left + right) / 2;
         int leftIndex = findDominatorRecursive(A, left, mid);
         int rightIndex = findDominatorRecursive(A, mid + 1, right);
 
-        int leftValue = leftIndex != -1 ? A[leftIndex] : Integer.MIN_VALUE;
-        int rightValue = rightIndex != -1 ? A[rightIndex] : Integer.MIN_VALUE;
+        int leftValue = leftIndex != -1 ? A[leftIndex] : -1;
+        int rightValue = rightIndex != -1 ? A[rightIndex] : -1;
 
         int leftCount = 0, rightCount = 0;
         for (int i = left; i <= right; i++) {
